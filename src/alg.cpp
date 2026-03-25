@@ -54,8 +54,8 @@ int main() {
     unsigned int maxlen;
     uint64_t maxValue;
     unsigned int bestNum = seqCollatz(&maxlen, lbound, rbound, &maxValue);
-    std::cout << "Число с самой длинной последовательностью: " << bestNum << std::endl;
-    std::cout << "Длина последовательности: " << maxlen << std::endl;
-    std::cout << "Максимальное число в последовательности: " << maxValue << std::endl;
+    printf("Число с самой длинной последовательностью: %u\n", bestNum);
+    printf("Длина последовательности: %u\n", maxlen);
+    printf("Максимальное число в последовательности: %llu\n", maxValue);
     return 0;
 }
