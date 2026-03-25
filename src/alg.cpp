@@ -1,6 +1,6 @@
 // Copyright 2025 NNTU-CS
-#include <stdio.h>
-#include <stdint.h>
+#include <iostream>
+#include <cstdint>
 unsigned int collatzLen(uint64_t num) {
     unsigned int len = 1;
     while (num != 1) {
@@ -27,7 +27,8 @@ uint64_t collatzMaxValue(uint64_t num) {
     }
     return maxVal;
 }
-unsigned int seqCollatz(unsigned int *maxlen, uint64_t lbound, uint64_t rbound, uint64_t *maxValue) {
+unsigned int seqCollatz(unsigned int *maxlen, uint64_t lbound, uint64_t rbound,
+                        uint64_t *maxValue) {
     unsigned int bestNum = lbound;
     unsigned int bestLen = collatzLen(lbound);
     uint64_t bestMaxVal = collatzMaxValue(lbound);
@@ -53,8 +54,8 @@ int main() {
     unsigned int maxlen;
     uint64_t maxValue;
     unsigned int bestNum = seqCollatz(&maxlen, lbound, rbound, &maxValue);
-    printf("Число с самой длинной последовательностью: %u\n", bestNum);
-    printf("Длина последовательности: %u\n", maxlen);
-    printf("Максимальное число в последовательности: %llu\n", maxValue);
+    std::cout << "Число с самой длинной последовательностью: " << bestNum << std::endl;
+    std::cout << "Длина последовательности: " << maxlen << std::endl;
+    std::cout << "Максимальное число в последовательности: " << maxValue << std::endl;
     return 0;
 }
