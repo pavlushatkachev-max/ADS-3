@@ -27,24 +27,19 @@ uint64_t collatzMaxValue(uint64_t num) {
     }
     return maxVal;
 }
-unsigned int seqCollatz(unsigned int *maxlen, uint64_t lbound, uint64_t rbound,
-                        uint64_t *maxValue) {
+unsigned int seqCollatz(unsigned int *maxlen, uint64_t lbound, 
+                        uint64_t rbound) {
     unsigned int bestNum = lbound;
     unsigned int bestLen = collatzLen(lbound);
-    uint64_t bestMaxVal = collatzMaxValue(lbound);
     for (uint64_t n = lbound + 1; n <= rbound; n++) {
         unsigned int len = collatzLen(n);
         if (len > bestLen) {
             bestLen = len;
             bestNum = n;
-            bestMaxVal = collatzMaxValue(n);
         }
     }
     if (maxlen) {
         *maxlen = bestLen;
-    }
-    if (maxValue) {
-        *maxValue = bestMaxVal;
     }
     return bestNum;
 }
@@ -52,8 +47,8 @@ int main() {
     uint64_t lbound = 2;
     uint64_t rbound = 1000000;
     unsigned int maxlen;
-    uint64_t maxValue;
-    unsigned int bestNum = seqCollatz(&maxlen, lbound, rbound, &maxValue);
+    unsigned int bestNum = seqCollatz(&maxlen, lbound, rbound);
+    uint64_t maxValue = collatzMaxValue(bestNum);
     std::cout << "Число с самой длинной последовательностью: "
         << bestNum << std::endl;
     std::cout << "Длина последовательности: "
